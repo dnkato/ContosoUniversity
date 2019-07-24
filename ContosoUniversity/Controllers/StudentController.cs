@@ -16,7 +16,7 @@ namespace ContosoUniversity.Controllers
         private SchoolContext db = new SchoolContext();
 
         // GET: Student
-        public ActionResult Index(string sortOrder)
+        public ViewResult Index(string sortOrder, string searchString)
         {
             // The two ViewBag variables are used so that the view can configure the column heading 
             // hyperlinks with the appropriate query string values:
@@ -25,6 +25,12 @@ namespace ContosoUniversity.Controllers
 
             var students = from s in db.Students
                            select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.LastName.Contains(searchString)
+                                       || s.FirstMidName.Contains(searchString));
+            }
+
             switch (sortOrder)
             {
                 case "name_desc":
