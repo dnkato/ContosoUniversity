@@ -26,5 +26,13 @@ namespace ContosoUniversity.Controllers
 
             return View();
         }
+
+        public ActionResult UnderConstruction(string site = "")
+        {
+
+            ViewBag.Message = ((site =="")? "This site" : site) + " is Under Construction.";
+
+            return View();
+        }
     }
 }
