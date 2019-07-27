@@ -62,6 +62,14 @@ namespace ContosoUniversity.Controllers
                 //Log the error (uncomment dex variable name and add a line here to write a log.)
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
             }
+            catch (DbUpdateException)
+            {
+                // Check to see if the CourseID is already in use
+                if (db.Courses.Find(course.CourseID) != null)
+                {
+                    ModelState.AddModelError("CourseID", "Course number already exists");
+                }
+            }
             PopulateDepartmentsDropDownList(course.DepartmentID);
             return View(course);
         }
