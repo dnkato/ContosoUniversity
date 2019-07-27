@@ -1,6 +1,6 @@
 # ContosoUniversity
 
-See the [live demo](http://contosouniversitydk.azurewebsites.net/Home/UnderConstruction?site=Departments)
+See the [live demo](http://contosouniversitydk.azurewebsites.net)
 
 Microsoft tutorial series for the Contoso University sample application. 
 
